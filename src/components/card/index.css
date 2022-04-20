@@ -1,0 +1,12 @@
+/* .checkBox {
+    display: flex;
+} */
+
+/* .rating {
+    display: grid;
+} */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

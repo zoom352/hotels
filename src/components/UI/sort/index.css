@@ -1,0 +1,25 @@
+.almost-select {
+    display: inline-block;
+    background: #EEE;
+    border: #CCC solid;
+    border-radius: .2rem;
+  }
+  .almost-select input,
+  .almost-select output{
+    display: none;
+  }
+  .almost-select {
+    display: inline-block;
+    border-left: inherit;
+  }
+  .almost-select label {
+    font-size: .5em;
+  }
+  
+  .almost-select #temp_high:checked ~ output[for='temp_high'] {
+    display: inline-block;
+  }
+  .almost-select #temp_low:checked ~ output[for='temp_low'] {
+    display: inline-block;
+  }
+
