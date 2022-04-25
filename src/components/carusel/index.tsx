@@ -6,11 +6,13 @@ function Carusel(props: any) {
     var items = [
         {
             name: "Random Name #1",
-            description: "Probably the most random thing you have ever seen!"
+            description: "hello bro",
+            picture: "http://random.com/next",
         },
         {
             name: "Random Name #2",
-            description: "Hello World!"
+            description: "Hello World!",
+            picture: "http://random.com/next"
         }
     ]
 
@@ -29,6 +31,7 @@ function Item(props: any)
         <Paper>
             <h2>{props.item.name}</h2>
             <p>{props.item.description}</p>
+            <img src={props.item.picture}/>
 
             <Button className="CheckButton">
                 Check it out!

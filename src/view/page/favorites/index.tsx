@@ -4,9 +4,7 @@ import Hotel from "../../../components/search";
 import Card from "../../../components/card";
 
 const Favorites = (props: any) => {
-    const {fullName} = props;
-
-    console.log(fullName)
+    const {like, onChangeAdd, basket} = props;
 
     return (
     <Box
@@ -21,12 +19,15 @@ const Favorites = (props: any) => {
       <select>
         <option>ценна</option>
       </select>
-      {fullName?.map((el: any) => {
+      {basket?.map((el: any) => {
           return ( 
-            <Card 
+            <Card
+              onChangeAdd={onChangeAdd}
               name={el.hotelName}
               stars={el.stars}
               price={el.priceAvg}
+              id={el}
+              like={like}
             />
         )
       })}

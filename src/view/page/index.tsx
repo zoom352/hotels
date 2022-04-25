@@ -8,6 +8,8 @@ const Page = () => {
 
     const [state, setState] = useState<any>([])
     const [search, setSearch] = useState('')
+    const [basket, setBasket] = useState<any>([])
+    const [like, setLike] = useState(false)
 
     useEffect(() => {
       async function name1() {
@@ -17,21 +19,25 @@ const Page = () => {
       name1()
     }, [])
 
-    console.log(state)
-
     const onChange = (e: any) => {
         setSearch(e.target.value)
+    }
+
+    const onChangeAdd = (id: any) => {
+      const findItem = [...basket, state.find((el: any) => el.hotelId === id)]
+      setBasket(findItem)
+      setLike(true)
+    }
+
+    const onRemoveAdd = (id: any) => {
+      const deleteItem = [...basket.filter((el: any) => el.hotelId !== id)]
+      setBasket(deleteItem)
+      setLike(false)
     }
 
     async function getHotel() {
       const responce = PostService.getAll(search)
       setState((await responce).data)
-    }
-
-    var fullHotel
-
-    for (var hotel in state.results) {
-      fullHotel = state.results[hotel]
     }
 
   return (
@@ -45,10 +51,10 @@ const Page = () => {
             />
           </div>
           <div style={{marginLeft: '-40%', marginTop: '3%'}}>
-            <Hotels/>
+            <Hotels fullName={state} onChangeAdd={onChangeAdd}/>
           </div>
           <div style={{marginTop: '-81%'}}>
-            <Favorites fullName={state}/>
+            <Favorites like={like} basket={basket} onChangeAdd={onRemoveAdd}/>
           </div>
         </div>
   )

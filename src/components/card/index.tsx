@@ -9,14 +9,30 @@ import './index.css'
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Card = (props: any) => {
-    const {name, stars, price} = props
+    const {name, stars, price, onChangeAdd, id, like} = props
     const [value, setValue] = React.useState<number | null>(2);
+
+    console.log(like)
 
     return (
     <>
-      <div className="wrapper">
+      <div key={id.hotelId} className="wrapper">
           <p>{name}</p>
-          <Checkbox style={{marginLeft: '45%'}} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+          {like ? 
+          <Checkbox
+            defaultChecked
+            onClick={() => onChangeAdd(id.hotelId)}
+            style={{marginLeft: '45%'}}
+            {...label}
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+          />: <Checkbox
+            onClick={() => onChangeAdd(id.hotelId)}
+            style={{marginLeft: '45%'}}
+            {...label}
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+          />}
           <span>28 june 2020 - 1 день</span>
           <p></p>
           <Rating value={stars} readOnly />
