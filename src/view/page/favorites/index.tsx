@@ -2,9 +2,16 @@ import React from "react";
 import Box from '@mui/material/Box';
 import Hotel from "../../../components/search";
 import Card from "../../../components/card";
+import MySelect from "../../../components/mySelect";
 
 const Favorites = (props: any) => {
-    const {like, onChangeAdd, basket} = props;
+    const {
+      like, 
+      onChangeAdd, 
+      basket,
+      selectedSort,
+      sortHotels
+    } = props;
 
     return (
     <Box
@@ -16,9 +23,15 @@ const Favorites = (props: any) => {
         backgroundColor: 'primary.dark'
     }}>
       <h2>Избранное</h2>
-      <select>
-        <option>ценна</option>
-      </select>
+      <MySelect
+        value={selectedSort}
+        onChange={sortHotels}
+        defaultValue=''
+        options={[
+          {value: 'priceAvg', name: 'ценна'},
+          {value: 'stars', name: 'Рейтинг'}
+        ]}
+      />
       {basket?.map((el: any) => {
           return ( 
             <Card
@@ -32,7 +45,7 @@ const Favorites = (props: any) => {
         )
       })}
     </Box>
-    )
+  )
 }
 
 export default Favorites;

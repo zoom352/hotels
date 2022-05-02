@@ -2,6 +2,11 @@
   margin-left: 17%;
 }
 
+.scrol {
+  overflow: auto;
+  height: 800px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

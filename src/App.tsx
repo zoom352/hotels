@@ -1,18 +1,23 @@
-import React from 'react';
-import './App.css';
-import Hotel from './components/search';
-import Favorites from './view/page/favorites';
-import Grid from '@mui/material/Grid';
-import Page from './view/page';
+import { useEffect, useState } from 'react';
+import CombineComponent from './combineComponent';
+import { AuthContext } from './context';
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false)
+
+  useEffect(() => {
+    if(localStorage.getItem('auth')){
+      setIsAuth(true)
+    }
+  }, [])
+
   return (
-    <div className='App'>
-      <h1>Hotel</h1>
-      <Grid>
-        <Page/>
-      </Grid>
-    </div>
+    <AuthContext.Provider value={{
+      setIsAuth,
+      isAuth
+    }}>
+      <CombineComponent />
+    </AuthContext.Provider>
   );
 }
 

@@ -8,7 +8,7 @@ export const hotelAC = {
 
   fetchHotelsThunk: () => async(dispatch: any) => {
     try {
-      const response = await PostService.getAll('')
+      const response = await PostService.getAll('', '', '')
       dispatch(hotelAC.getHotels(response.data))
     } catch(e) {
       console.log(e)

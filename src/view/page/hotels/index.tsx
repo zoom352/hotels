@@ -2,11 +2,13 @@ import React from "react";
 import Box from '@mui/material/Box';
 import Carusel from "../../../components/carusel";
 import Card from "../../../components/card";
+// import './index.css'
 
 const Hotels = (props: any) => {
-  const {fullName, onChangeAdd, like} = props;
+  const {loading, fullName, onChangeAdd, like} = props;
 
     return (
+      // eslint-disable-next-line react/style-prop-object
         <Box
           style={{marginLeft: '5%'}}
           sx={{
@@ -15,11 +17,13 @@ const Hotels = (props: any) => {
             height: 850,
             backgroundColor: 'primary.dark'
         }}>
+          <div className="scrol">
           <h2>Отели <span>Москва</span></h2>
           <Carusel/>
           {fullName?.map((el: any) => {
           return ( 
             <Card
+              loading={loading}
               onChangeAdd={onChangeAdd}
               name={el.hotelName}
               stars={el.stars}
@@ -29,6 +33,7 @@ const Hotels = (props: any) => {
             />
           )
           })}
+          </div>
         </Box>
     )
 }

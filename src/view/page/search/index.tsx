@@ -7,7 +7,11 @@ const Search = (props: any) => {
     fullName,
     getHotel,
     onChange,
-    search
+    search,
+    checkIn,
+    changeCalendar,
+    changeCalendarOut,
+    checkOut
   } = props
 
   
@@ -24,7 +28,12 @@ const Search = (props: any) => {
           fullName={fullName}
           getHotel={getHotel}
           onChange={onChange}
-          search={search}/>
+          search={search}
+          checkIn={checkIn}
+          checkOut={checkOut}
+          changeCalendar={changeCalendar}
+          changeCalendarOut={changeCalendarOut}
+        />
       </Box>
   )
 }
